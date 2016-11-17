@@ -1,4 +1,4 @@
-#include "Graphic.h"
+﻿#include "Graphic.h"
 
 int Graphic::m_screen_width = SCREEN_WIDTH;
 int Graphic::m_screen_height = SCREEN_HEIGHT;

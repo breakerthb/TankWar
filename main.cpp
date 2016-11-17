@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+ï»¿#pragma warning(disable:4996)
 
 #include <iostream>
 #include <conio.h>
@@ -41,7 +41,7 @@ void main()
 			case 77: 
 				mainTank.SetDir(Dir::RIGHT);
 				break;
-			case 224: // ·½Ïò¼ü¸ß8Î»
+			case 224: // æ–¹å‘é”®é«˜8ä½
 				break;
 			// Esc
 			case 27:

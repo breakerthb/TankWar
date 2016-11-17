@@ -1,4 +1,4 @@
-#include "MainTank.h"
+﻿#include "MainTank.h"
 
 void MainTank::SetDir(Dir dir)
 {
@@ -82,15 +82,3 @@ void MainTank::Move()
 	}
 }
 
-int MainTank::IsOutside()
-{
-	if (m_x < 0 || m_x > Graphic::GetScreenWidth() || 
-		m_y < 0 || m_y > Graphic::GetScreenHeight())
-	{
-		return 0;
-	}
-	else
-	{
-		return 1;
-	}
-}

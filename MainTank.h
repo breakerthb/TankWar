@@ -1,4 +1,4 @@
-#ifndef __MAIN_TANK__
+﻿#ifndef __MAIN_TANK__
 #define __MAIN_TANK__
 
 #include "Tank.h"
@@ -17,14 +17,14 @@ public:
 
 	~MainTank(){}
 
+	// 设置行驶方向
 	void SetDir(Dir dir);
 	void Display();
 	void Move();
 
 protected:
+	// 绘制坦克主体
 	void DrawTankBody(int style);
-	int IsOutside();
-	
 };
 
 #endif
