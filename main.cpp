@@ -6,14 +6,26 @@
 
 #include "Graphic.h"
 #include "MainTank.h"
+#include "EnemyTank.h"
 
 using namespace std;
 
+#define MAX_TANKS 10
+
 void main()
 {
+	srand((unsigned)time(NULL));
+
 	Graphic::Create();
 
 	MainTank mainTank;
+
+	Tank* pTank[MAX_TANKS];
+
+	for (int i = 0; i < MAX_TANKS; i++)
+	{
+		pTank[i] = new EnemyTank();
+	}
 
 	bool loop = true;
 	bool skip = false;
@@ -66,12 +78,25 @@ void main()
 		{
 			cleardevice();
 
+			Graphic::DrawBattleGround();
+
 			mainTank.Move();
 			mainTank.Display();
+
+			for (int i = 0; i < MAX_TANKS; i++)
+			{
+				pTank[i]->Move();
+				pTank[i]->Display();
+			}
 		}
 
 		Sleep(200);
 	}
 	
+	for (int i = 0; i < MAX_TANKS; i++)
+	{
+		delete pTank[i];
+	}
+
 	Graphic::Destroy();
 }

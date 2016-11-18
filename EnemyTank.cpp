@@ -1,45 +1,34 @@
-﻿#include "MainTank.h"
+#include "EnemyTank.h"
 
-void MainTank::SetDir(Dir dir)
+void EnemyTank::RandomTank()
 {
-	m_dir = dir;
+	m_pos.SetX(rand() % Graphic::GetBattleGround().GetWidth());
+	m_pos.SetY(rand() % Graphic::GetBattleGround().GetHeight());
+	m_color = WHITE;
+	m_dir = (Dir)(Dir::UP + (rand() % 4));
+	m_step = 2;
 }
 
-void MainTank::DrawTankBody()
-{
-	fillrectangle(m_pos.GetX() - 6, m_pos.GetY() - 6, m_pos.GetX() + 6, m_pos.GetY() + 6);
-
-	switch (m_dir)
-	{
-	case UP:
-	case DOWN:
-		fillrectangle(m_rectSphere.GetStartPoint().GetX(), m_rectSphere.GetStartPoint().GetY(),
-			m_rectSphere.GetStartPoint().GetX() + 4, m_rectSphere.GetEndPoint().GetY());
-		fillrectangle(m_rectSphere.GetEndPoint().GetX() - 4, m_rectSphere.GetStartPoint().GetY(),
-			m_rectSphere.GetEndPoint().GetX(), m_rectSphere.GetEndPoint().GetY());
-		break;
-	case LEFT:
-	case RIGHT:
-		fillrectangle(m_rectSphere.GetStartPoint().GetX(), m_rectSphere.GetStartPoint().GetY(),
-			m_rectSphere.GetEndPoint().GetX(), m_rectSphere.GetStartPoint().GetY() + 4);
-		fillrectangle(m_rectSphere.GetStartPoint().GetX(), m_rectSphere.GetEndPoint().GetY() - 4,
-			m_rectSphere.GetEndPoint().GetX(), m_rectSphere.GetEndPoint().GetY());
-		break;
-	default:
-		break;
-	}
-}
-
-void MainTank::Display()
+void EnemyTank::Display()
 {
 	COLORREF fill_color_save = getfillcolor();
 	COLORREF color_save = getcolor();
 
 	setfillcolor(m_color);
 	setcolor(m_color);
+	
+	fillrectangle(m_pos.GetX() - 6, m_pos.GetY() - 6, m_pos.GetX() + 6, m_pos.GetY() + 6);
 
-	DrawTankBody();
+	fillrectangle(m_rectSphere.GetStartPoint().GetX(), m_rectSphere.GetStartPoint().GetY(),
+		m_rectSphere.GetStartPoint().GetX() + 4, m_rectSphere.GetStartPoint().GetY() + 4);
+	fillrectangle(m_rectSphere.GetEndPoint().GetX() - 4, m_rectSphere.GetStartPoint().GetY(),
+		m_rectSphere.GetEndPoint().GetX(), m_rectSphere.GetStartPoint().GetY() + 4);
 
+	fillrectangle(m_rectSphere.GetStartPoint().GetX(), m_rectSphere.GetEndPoint().GetY() - 4,
+		m_rectSphere.GetStartPoint().GetX() + 4, m_rectSphere.GetEndPoint().GetY());
+	fillrectangle(m_rectSphere.GetEndPoint().GetX() - 4, m_rectSphere.GetEndPoint().GetY() - 4,
+		m_rectSphere.GetEndPoint().GetX(), m_rectSphere.GetEndPoint().GetY());
+	
 	switch (m_dir)
 	{
 	case UP:
@@ -62,7 +51,7 @@ void MainTank::Display()
 	setfillcolor(fill_color_save);
 }
 
-void MainTank::Move()
+void EnemyTank::Move()
 {
 	switch (m_dir)
 	{
@@ -93,7 +82,7 @@ void MainTank::Move()
 	CalculateSphere();
 }
 
-void MainTank::CalculateSphere()
+void EnemyTank::CalculateSphere()
 {
 	switch (m_dir)
 	{

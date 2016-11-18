@@ -15,14 +15,16 @@ public:
 	virtual void Move() = 0;
 	
 protected:
-	int m_x;
-	int m_y;
+	virtual void CalculateSphere() = 0;
+
+	Point m_pos;
+	Rect m_rectSphere; // 势力范围
+
 	COLORREF m_color;
 
 	Dir m_dir;
+
 	int m_step;
 };
-
-
 
 #endif
