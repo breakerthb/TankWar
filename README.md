@@ -6,7 +6,7 @@
 
 Tank War game with C++
 
-![](https://raw.githubusercontent.com/breakerthb/TankWar/day2/readme/tank.gif)
+![](http://i.imgur.com/4pqqSjK.gif)
 
 # Flag
 
@@ -34,4 +34,4 @@ develop a main tank
 
 ## day3
 
-- Add enemy tanks
+- Add enemy tanks which can turn directory automatically
