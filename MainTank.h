@@ -14,7 +14,7 @@ public:
 
 		m_color = YELLOW;
 		m_dir = Dir::UP;
-		m_step = 2;
+		m_step = 4;
 	}
 
 	~MainTank(){}

@@ -31,3 +31,7 @@ develop a main tank
 - Change background color
 - Add two class : Point and Rect
 - Add Enemy class
+
+## day3
+
+- Add enemy tanks
