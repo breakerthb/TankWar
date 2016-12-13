@@ -1,5 +1,7 @@
 ﻿#include "MainTank.h"
 
+#include "Bullet.h"
+
 void MainTank::SetDir(Dir dir)
 {
 	m_dir = dir;
@@ -108,4 +110,11 @@ void MainTank::CalculateSphere()
 	default:
 		break;
 	}
+}
+
+void MainTank::Shoot(list<Object*>& lstBullets)
+{
+	Bullet* pBullet = new Bullet(m_pos, m_dir, m_color);
+
+	lstBullets.push_back(pBullet);
 }

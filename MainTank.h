@@ -6,7 +6,7 @@
 class MainTank : public Tank
 {
 public:
-	MainTank()
+	MainTank() : Tank()
 	{
 		m_pos.Set(300, 300);
 
@@ -19,10 +19,10 @@ public:
 
 	~MainTank(){}
 
-	// 设置行驶方向
 	void SetDir(Dir dir);
 	void Display();
 	void Move();
+	void Shoot(list<Object*>& lstBullets);
 
 protected:
 	void CalculateSphere();

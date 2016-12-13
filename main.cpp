@@ -4,6 +4,8 @@
 #include <conio.h>
 #include <time.h>
 
+#include <list>
+
 #include "Graphic.h"
 #include "MainTank.h"
 #include "EnemyTank.h"
@@ -20,12 +22,16 @@ void main()
 
 	MainTank mainTank;
 
-	Tank* pTank[MAX_TANKS];
+	list<Tank*> lstTanks;
+	lstTanks.clear();
 
 	for (int i = 0; i < MAX_TANKS; i++)
 	{
-		pTank[i] = new EnemyTank();
+		lstTanks.push_back(new EnemyTank());
 	}
+
+	list<Object*> lstBullets;
+	lstBullets.clear();
 
 	bool loop = true;
 	bool skip = false;
@@ -61,6 +67,7 @@ void main()
 				break;
 			// Space
 			case 32:
+  				mainTank.Shoot(lstBullets);
 				break;
 			// Enter
 			case 13:
@@ -83,20 +90,45 @@ void main()
 			mainTank.Move();
 			mainTank.Display();
 
-			for (int i = 0; i < MAX_TANKS; i++)
+			for (list<Tank*>::iterator it = lstTanks.begin(); it != lstTanks.end(); it++)
 			{
-				pTank[i]->Move();
-				pTank[i]->Display();
+				(*it)->Move();
+				(*it)->Display();
+			}
+
+			for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end();)
+			{
+				(*it)->Move();
+			
+				if ((*it)->IsDisappear())
+				{
+
+					delete *it;
+					it = lstBullets.erase(it);
+					continue;
+				}
+
+				(*it)->Display();
+				it++;
 			}
 		}
 
 		Sleep(200);
 	}
 	
-	for (int i = 0; i < MAX_TANKS; i++)
+
+	// Destroy
+	for (list<Tank*>::iterator it = lstTanks.begin(); it != lstTanks.end(); it++)
 	{
-		delete pTank[i];
+		delete *it;
 	}
+	lstTanks.clear();
+
+	for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end(); it++)
+	{
+		delete *it;
+	}
+	lstBullets.clear();
 
 	Graphic::Destroy();
 }

@@ -1,30 +1,56 @@
 ﻿#ifndef __TANK_H__
 #define __TANK_H__
 
-#include "Graphic.h"
+#include "Object.h"
 
-enum Dir { UP, DOWN, LEFT, RIGHT };
+#include <list>
 
-class Tank
+using namespace std;
+
+class Tank : public Object
 {
 public:
-	// 绘图
-	virtual void Display() = 0;
+	Tank()
+	{
+		m_pos.Set(300, 300);
+
+		this->CalculateSphere();
+
+		m_color = YELLOW;
+		m_dir = Dir::UP;
+		m_step = 4;
+
+		m_bDisappear = false;
+	}
+
+	~Tank(){}
+
+	void Display()
+	{
+		// Display
+	}
 	
-	// 移动
-	virtual void Move() = 0;
+	void Move()
+	{
+		// Move
+	}
+
+	// 射击
+	void Shoot(list<Object*>& lstBullets)
+	{
+		// Shoot
+	}
+
+	bool IsDisappear()
+	{
+		return m_bDisappear;
+	}
 	
 protected:
-	virtual void CalculateSphere() = 0;
-
-	Point m_pos;
-	Rect m_rectSphere; // 势力范围
-
-	COLORREF m_color;
-
-	Dir m_dir;
-
-	int m_step;
+	void CalculateSphere()
+	{
+		// Calculate Sphere
+	}
 };
 
 #endif
