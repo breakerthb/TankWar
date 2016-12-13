@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __BULLET_H__
+#define __BULLET_H__
 
 #include "Object.h"
 
@@ -22,3 +23,4 @@ protected:
 	void CalculateSphere();
 };
 
+#endif
