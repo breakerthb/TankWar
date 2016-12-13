@@ -6,7 +6,7 @@
 
 Tank War game with C++
 
-![](https://raw.githubusercontent.com/breakerthb/TankWar/day2/readme/tank.gif)
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day4/readme/tank.gif)
 
 # Flag
 
@@ -35,3 +35,8 @@ develop a main tank
 ## day3
 
 - Add enemy tanks
+
+## day4
+
+- Add object class
+- main tank can shoot
