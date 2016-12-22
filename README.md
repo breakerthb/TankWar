@@ -26,7 +26,7 @@ Final Version
 
 develop a main tank
 
-![](https://raw.githubusercontent.com/breakerthb/TankWar/day1/readme/tank.gif)
+![](https://github.com/breakerthb/TankWar/blob/master/tank.gif)
 
 <https://github.com/breakerthb/TankWar/tree/day1>
 
@@ -36,7 +36,7 @@ develop a main tank
 - Add two class : Point and Rect
 - Add Enemy class
 
-![](https://raw.githubusercontent.com/breakerthb/TankWar/day2/readme/tank.gif)
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day2/readme/battleground.png)
 
 <https://github.com/breakerthb/TankWar/tree/day2>
 
