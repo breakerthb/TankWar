@@ -4,9 +4,9 @@
 
 # Project Introduction
 
-To increase the web page access times automatically.
+Tank War game with C++
 
-![](https://github.com/breakerthb/TankWar/blob/master/tank.gif)
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day5/readme/tank.gif)
 
 # Flag
 
@@ -25,3 +25,42 @@ Final Version
 ## day1
 
 develop a main tank
+
+![](https://github.com/breakerthb/TankWar/blob/master/tank.gif)
+
+<https://github.com/breakerthb/TankWar/tree/day1>
+
+## day2
+
+- Change background color
+- Add two class : Point and Rect
+- Add Enemy class
+
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day2/readme/battleground.png)
+
+<https://github.com/breakerthb/TankWar/tree/day2>
+
+## day3
+
+- Add enemy tanks
+
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day3/readme/tank.gif)
+
+<https://github.com/breakerthb/TankWar/tree/day3>
+
+## day4
+
+- Add object class
+- main tank can shoot
+
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day4/readme/tank.gif)
+
+<https://github.com/breakerthb/TankWar/tree/day4>
+
+## day5
+
+- Add bomb method for bullets
+
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day5/readme/tank.gif)
+
+<https://github.com/breakerthb/TankWar/tree/day5>
