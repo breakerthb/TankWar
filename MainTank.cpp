@@ -118,3 +118,8 @@ void MainTank::Shoot(list<Object*>& lstBullets)
 
 	lstBullets.push_back(pBullet);
 }
+
+void MainTank::Boom(list<Object*>& lstBombs)
+{
+
+}

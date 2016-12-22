@@ -1,5 +1,7 @@
 #include "Bullet.h"
 
+#include "Bomb.h"
+
 Bullet::Bullet()
 {
 }
@@ -32,7 +34,7 @@ void Bullet::Display()
 	setfillcolor(m_color);
 	setcolor(m_color);
 
-	fillcircle(m_pos.GetX() - 1, m_pos.GetY() - 1, 4);
+	fillcircle(m_pos.GetX(), m_pos.GetY(), 4);
 		
 	setcolor(color_save);
 	setfillcolor(fill_color_save);
@@ -48,6 +50,7 @@ void Bullet::Move()
 		CalculateSphere();
 		if (m_rectSphere.GetStartPoint().GetY() < Graphic::GetBattleGround().GetStartPoint().GetY())
 		{
+			m_pos.SetY(Graphic::GetBattleGround().GetStartPoint().GetY());
 			m_bDisappear = true;
 		}
 		break;
@@ -56,6 +59,7 @@ void Bullet::Move()
 		CalculateSphere();
 		if (m_rectSphere.GetEndPoint().GetY() > Graphic::GetBattleGround().GetEndPoint().GetY())
 		{
+			m_pos.SetY(Graphic::GetBattleGround().GetEndPoint().GetY());
 			m_bDisappear = true;
 		}
 		break;
@@ -64,6 +68,7 @@ void Bullet::Move()
 		CalculateSphere();
 		if (m_rectSphere.GetStartPoint().GetX() < Graphic::GetBattleGround().GetStartPoint().GetX())
 		{
+			m_pos.SetX(Graphic::GetBattleGround().GetStartPoint().GetX());
 			m_bDisappear = true;
 		}
 		break;
@@ -72,12 +77,18 @@ void Bullet::Move()
 		CalculateSphere();
 		if (m_rectSphere.GetEndPoint().GetX() > Graphic::GetBattleGround().GetEndPoint().GetX())
 		{
+			m_pos.SetX(Graphic::GetBattleGround().GetEndPoint().GetX());
 			m_bDisappear = true;
 		}
 		break;
 	default:
 		break;
 	}	
+}
+
+void Bullet::Boom(list<Object*>& lstBombs)
+{
+	lstBombs.push_back(new Bomb(m_pos, SMALL));
 }
 
 void Bullet::CalculateSphere()

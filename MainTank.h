@@ -23,6 +23,7 @@ public:
 	void Display();
 	void Move();
 	void Shoot(list<Object*>& lstBullets);
+	void Boom(list<Object*>& lstBombs);
 
 protected:
 	void CalculateSphere();

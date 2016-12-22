@@ -1,7 +1,11 @@
 ﻿#ifndef __OBJECT_H__
 #define __OBJECT_H__
 
+#include <list>
+
 #include "Graphic.h"
+
+using namespace std;
 
 enum Dir { UP, DOWN, LEFT, RIGHT };
 
@@ -13,6 +17,9 @@ public:
 
 	// 移动
 	virtual void Move() = 0;
+
+	// 爆炸
+	virtual void Boom(list<Object*>& lstBombs) = 0;
 
 	// 判断是否消失
 	virtual bool IsDisappear() = 0;

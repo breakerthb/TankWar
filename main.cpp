@@ -22,6 +22,7 @@ void main()
 
 	MainTank mainTank;
 
+	// Tank list
 	list<Tank*> lstTanks;
 	lstTanks.clear();
 
@@ -30,8 +31,13 @@ void main()
 		lstTanks.push_back(new EnemyTank());
 	}
 
+	// Bullet list
 	list<Object*> lstBullets;
 	lstBullets.clear();
+
+	// Bomb List
+	list<Object*> lstBombs;
+	lstBombs.clear();
 
 	bool loop = true;
 	bool skip = false;
@@ -90,21 +96,42 @@ void main()
 			mainTank.Move();
 			mainTank.Display();
 
+			// Draw Tanks
 			for (list<Tank*>::iterator it = lstTanks.begin(); it != lstTanks.end(); it++)
 			{
 				(*it)->Move();
 				(*it)->Display();
 			}
 
+			// Draw Bullets
 			for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end();)
 			{
 				(*it)->Move();
 			
 				if ((*it)->IsDisappear())
 				{
+					// Add a bomb
+					(*it)->Boom(lstBombs);
 
+					// Delete the bullet
 					delete *it;
 					it = lstBullets.erase(it);
+					continue;
+				}
+
+				(*it)->Display();
+				it++;
+			}
+
+			// Draw Bombs
+			for (list<Object*>::iterator it = lstBombs.begin(); it != lstBombs.end();)
+			{
+				(*it)->Move();
+
+				if ((*it)->IsDisappear())
+				{
+					delete *it;
+					it = lstBombs.erase(it);
 					continue;
 				}
 
@@ -129,6 +156,12 @@ void main()
 		delete *it;
 	}
 	lstBullets.clear();
+
+	for (list<Object*>::iterator it = lstBombs.begin(); it != lstBombs.end(); it++)
+	{
+		delete *it;
+	}
+	lstBombs.clear();
 
 	Graphic::Destroy();
 }

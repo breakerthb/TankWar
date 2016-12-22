@@ -14,6 +14,8 @@ public:
 
 	void Move();
 
+	void Boom(list<Object*>& lstBombs);
+
 	bool IsDisappear()
 	{
 		return m_bDisappear;

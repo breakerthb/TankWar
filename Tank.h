@@ -35,6 +35,11 @@ public:
 		// Move
 	}
 
+	void Boom(list<Object*>& lstBombs)
+	{
+		// Boom
+	}
+
 	// 射击
 	void Shoot(list<Object*>& lstBullets)
 	{
