@@ -6,7 +6,7 @@
 
 Tank War game with C++
 
-![](https://raw.githubusercontent.com/breakerthb/TankWar/day5/readme/tank.gif)
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day6/readme/tank.gif)
 
 # Flag
 

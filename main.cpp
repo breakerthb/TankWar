@@ -1,4 +1,4 @@
-﻿#pragma warning(disable:4996)
+#pragma warning(disable:4996)
 
 #include <iostream>
 #include <conio.h>
@@ -17,7 +17,6 @@ using namespace std;
 
 // Bullet list
 list<Object*> lstMainTankBullets;
-//list<Object*> lstBullets;
 
 // Bomb List
 list<Object*> lstBombs;
@@ -49,7 +48,6 @@ void main()
 	MainTank mainTank;
 
 	lstMainTankBullets.clear();
-	//lstBullets.clear();
 	lstBombs.clear();
 	lstTanks.clear();
 
@@ -136,11 +134,6 @@ void main()
 
 				(*it)->Display();
 
-				/*if ((*it)->NeedShoot())
-				{
-					EnemyTank* p = (EnemyTank*)*it;
-					p->Shoot(lstBullets);
-				}*/
 				it++;
 			}
 
@@ -163,25 +156,6 @@ void main()
 				(*it)->Display();
 				it++;
 			}
-
-			//for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end();)
-			//{
-			//	(*it)->Move();
-			//
-			//	if ((*it)->IsDisappear())
-			//	{
-			//		// Add a bomb
-			//		(*it)->Boom(lstBombs);
-
-			//		// Delete the bullet
-			//		delete *it;
-			//		it = lstBullets.erase(it);
-			//		continue;
-			//	}
-
-			//	(*it)->Display();
-			//	it++;
-			//}
 
 			// Draw Bombs
 			for (list<Object*>::iterator it = lstBombs.begin(); it != lstBombs.end();)
@@ -215,11 +189,6 @@ void main()
 		delete *it;
 	}
 
-	//for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end(); it++)
-	//{
-	//	delete *it;
-	//}
-	//lstBullets.clear();
 
 	for (list<Object*>::iterator it = lstBombs.begin(); it != lstBombs.end(); it++)
 	{
