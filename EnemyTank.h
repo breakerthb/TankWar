@@ -3,7 +3,8 @@
 
 #include "Tank.h"
 
-#define MAX_STEP 10
+#define MAX_STEP_TURN	10
+#define MAX_STEP_SHOOT	15
 
 class EnemyTank : public Tank
 {
@@ -17,7 +18,7 @@ public:
 
 	void Display();
 	void Move();
-	void Shoot(list<Tank*>& lstTanks);
+	void Shoot(list<Object*>& lstBullets);
 
 protected:
 	void CalculateSphere();

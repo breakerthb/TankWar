@@ -64,3 +64,11 @@ develop a main tank
 ![](https://raw.githubusercontent.com/breakerthb/TankWar/day5/readme/tank.gif)
 
 <https://github.com/breakerthb/TankWar/tree/day5>
+
+## day6
+
+- Main tank's bullets can break the other tanks
+
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day6/readme/tank.gif)
+
+<https://github.com/breakerthb/TankWar/tree/day6>

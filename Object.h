@@ -21,8 +21,13 @@ public:
 	// 爆炸
 	virtual void Boom(list<Object*>& lstBombs) = 0;
 
+	// 设置消失
+	virtual void SetDisappear() = 0;
+
 	// 判断是否消失
 	virtual bool IsDisappear() = 0;
+
+	virtual Rect GetSphere() = 0;
 
 protected:
 	// 计算势力范围
@@ -30,8 +35,10 @@ protected:
 
 	// 位置
 	Point m_pos;
+
 	// 势力范围
-	Rect m_rectSphere; 
+	Rect m_rectSphere;
+
 	// 颜色
 	COLORREF m_color;
 	// 方向

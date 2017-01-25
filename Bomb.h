@@ -23,6 +23,12 @@ public:
 	void Boom(list<Object*>& lstBombs);
 	
 	bool IsDisappear();
+	void SetDisappear(){}
+
+	Rect GetSphere()
+	{
+		return m_rectSphere;
+	}
 
 protected:
 	void CalculateSphere();

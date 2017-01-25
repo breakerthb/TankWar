@@ -16,12 +16,12 @@ void Point::SetY(int y)
 	m_y = y;
 }
 
-int Point::GetX()
+int Point::GetX() const
 {
 	return m_x;
 }
 
-int Point::GetY()
+int Point::GetY() const
 {
 	return m_y;
 }

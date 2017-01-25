@@ -21,6 +21,16 @@ public:
 		return m_bDisappear;
 	}
 
+	Rect GetSphere()
+	{
+		return m_rectSphere;
+	}
+
+	void SetDisappear()
+	{
+		m_bDisappear = true;
+	}
+
 protected:
 	void CalculateSphere();
 };

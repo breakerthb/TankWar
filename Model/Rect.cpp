@@ -32,6 +32,22 @@ Point Rect::GetEndPoint() const
 	return m_endPoint;
 }
 
+Point Rect::GetTRPoint() const
+{
+	Point p = m_startPoint;
+	p.SetX(m_endPoint.GetX());
+
+	return p;
+}
+
+Point Rect::GetBLPoint() const
+{
+	Point p = m_startPoint;
+	p.SetY(m_endPoint.GetY());
+
+	return p;
+}
+
 int Rect::GetWidth()
 {
 	return m_endPoint.GetX() - m_startPoint.GetX();
@@ -51,3 +67,4 @@ void Rect::Check()
 		m_endPoint = m_startPoint;
 	}
 }
+

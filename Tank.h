@@ -2,6 +2,7 @@
 #define __TANK_H__
 
 #include "Object.h"
+#include "Bomb.h"
 
 #include <list>
 
@@ -21,6 +22,7 @@ public:
 		m_step = 4;
 
 		m_bDisappear = false;
+		m_bNeedShoot = false;
 	}
 
 	~Tank(){}
@@ -37,7 +39,7 @@ public:
 
 	void Boom(list<Object*>& lstBombs)
 	{
-		// Boom
+		lstBombs.push_back(new Bomb(m_pos, LARGE));
 	}
 
 	// 射击
@@ -46,16 +48,33 @@ public:
 		// Shoot
 	}
 
+	void SetDisappear()
+	{
+		m_bDisappear = true;
+	}
+
 	bool IsDisappear()
 	{
 		return m_bDisappear;
 	}
 	
+	Rect GetSphere()
+	{
+		return m_rectSphere;
+	}
+
+	bool NeedShoot()
+	{
+		return m_bNeedShoot;
+	}
+
 protected:
 	void CalculateSphere()
 	{
 		// Calculate Sphere
 	}
+
+	bool m_bNeedShoot;
 };
 
 #endif

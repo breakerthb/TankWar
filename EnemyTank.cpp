@@ -1,5 +1,7 @@
 ﻿#include "EnemyTank.h"
 
+#include "Bullet.h"
+
 void EnemyTank::RandomTank()
 {
 	m_pos.SetX(rand() % Graphic::GetBattleGround().GetWidth());
@@ -7,7 +9,7 @@ void EnemyTank::RandomTank()
 	m_color = WHITE;
 	m_dir = (Dir)(Dir::UP + (rand() % 4));
 	m_step = 2;
-	m_stepCnt = rand() % MAX_STEP;
+	m_stepCnt = rand();
 }
 
 void EnemyTank::RandomDir(int type)
@@ -113,10 +115,15 @@ void EnemyTank::Move()
 	CalculateSphere();
 
 	m_stepCnt++;
-	if (m_stepCnt >= MAX_STEP)
+	if (m_stepCnt % MAX_STEP_TURN == 0)
 	{
-		m_stepCnt = 0;
+		//m_stepCnt = 0;
 		this->RandomDir(0);
+	}
+
+	if (m_stepCnt % MAX_STEP_SHOOT == 0)
+	{
+		m_bNeedShoot = true;
 	}
 }
 
@@ -137,7 +144,11 @@ void EnemyTank::CalculateSphere()
 	}
 }
 
-void EnemyTank::Shoot(list<Tank*>& lstTanks)
+void EnemyTank::Shoot(list<Object*>& lstBullets)
 {
+	Bullet* pBullet = new Bullet(m_pos, m_dir, m_color);
 
+	lstBullets.push_back(pBullet);
+
+	m_bNeedShoot = false;
 }
