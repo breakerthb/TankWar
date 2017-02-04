@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+﻿#pragma warning(disable:4996)
 
 #include <iostream>
 #include <conio.h>
@@ -10,13 +10,13 @@
 #include "MainTank.h"
 #include "EnemyTank.h"
 #include "Utils/Shape.h"
+#include "Setting.h"
 
 using namespace std;
 
-#define MAX_TANKS 10
-
 // Bullet list
 list<Object*> lstMainTankBullets;
+list<Object*> lstBullets;
 
 // Bomb List
 list<Object*> lstBombs;
@@ -48,23 +48,37 @@ void main()
 	MainTank mainTank;
 
 	lstMainTankBullets.clear();
+	lstBullets.clear();
 	lstBombs.clear();
 	lstTanks.clear();
-
-	for (int i = 0; i < MAX_TANKS; i++)
-	{
-		EnemyTank* p = new EnemyTank();
-		lstTanks.push_back(p);
-	}
 
 	bool loop = true;
 	bool skip = false;
 	while (loop)
 	{
+		if (Setting::m_bNewLevel)
+		{
+			Sleep(1000);
+
+			Setting::m_bNewLevel = false;
+
+			Setting::NewGameLevel();
+
+			for (int i = 0; i < Setting::GetTankNum(); i++)
+			{
+				EnemyTank* p = new EnemyTank();
+				lstTanks.push_back(p);
+			}
+		}
+
 		if (kbhit())
 		{
-			int key = getch();
-			 
+ 			int key = getch();
+			if (skip && key != 13)
+			{
+				continue;
+			}
+
 			switch (key)
 			{
 			// Up
@@ -116,13 +130,15 @@ void main()
 			mainTank.Move();
 			mainTank.Display();
 
-			// Draw Tanks
+			/* Draw Tanks */
 			for (list<Tank*>::iterator it = lstTanks.begin(); it != lstTanks.end();)
 			{
 				(*it)->Move();
 
 				if ((*it)->IsDisappear())
 				{
+					Setting::TankDamaged();
+
 					// Add a bomb
 					(*it)->Boom(lstBombs);
 
@@ -134,10 +150,15 @@ void main()
 
 				(*it)->Display();
 
+				if ((*it)->NeedShoot())
+				{
+					EnemyTank* p = (EnemyTank*)*it;
+					p->Shoot(lstBullets);
+				}
 				it++;
 			}
 
-			// Draw Bullets
+			/* Draw Bullets */
 			for (list<Object*>::iterator it = lstMainTankBullets.begin(); it != lstMainTankBullets.end();)
 			{
 				(*it)->Move();
@@ -157,7 +178,26 @@ void main()
 				it++;
 			}
 
-			// Draw Bombs
+			for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end();)
+			{
+				(*it)->Move();
+			
+				if ((*it)->IsDisappear())
+				{
+					// Add a bomb
+					(*it)->Boom(lstBombs);
+
+					// Delete the bullet
+					delete *it;
+					it = lstBullets.erase(it);
+					continue;
+				}
+
+				(*it)->Display();
+				it++;
+			}
+
+			/* Draw Bombs */
 			for (list<Object*>::iterator it = lstBombs.begin(); it != lstBombs.end();)
 			{
 				(*it)->Move();
@@ -172,6 +212,9 @@ void main()
 				(*it)->Display();
 				it++;
 			}
+
+			/* Draw Score */
+			Graphic::ShowScore();
 		}
 
 		Sleep(200);
@@ -189,6 +232,11 @@ void main()
 		delete *it;
 	}
 
+	for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end(); it++)
+	{
+		delete *it;
+	}
+	lstBullets.clear();
 
 	for (list<Object*>::iterator it = lstBombs.begin(); it != lstBombs.end(); it++)
 	{

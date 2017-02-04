@@ -26,9 +26,13 @@ public:
 
 	static Rect GetBattleGround();
 
+	static void ShowScore();
+
 private:
 	static Rect m_rectScreen;
 	static Rect m_rectBattleGround;
+
+	static char m_pArray[100];
 };
 
 #endif

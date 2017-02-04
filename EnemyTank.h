@@ -3,7 +3,7 @@
 
 #include "Tank.h"
 
-#define MAX_STEP_TURN	10
+#define MAX_STEP_TURN	20
 #define MAX_STEP_SHOOT	15
 
 class EnemyTank : public Tank
