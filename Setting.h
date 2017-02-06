@@ -8,26 +8,8 @@ using namespace std;
 class Setting
 {
 public:
-	static void NewGameLevel()
-	{
-		m_nGameLevel++;
-
-		m_nTankNum = 10 + 5 * (m_nGameLevel - 1);
-		m_nTankScore += 5;
-	}
-
-	static void TankDamaged()
-	{
-		m_nTankNum--;
-		m_nSumScore += m_nTankScore;
-	
-		m_nTankSum++;
-
-		if (m_nTankNum == 0)
-		{
-			m_bNewLevel = true;
-		}
-	}
+	static void NewGameLevel();
+	static void TankDamaged();
 
 	static int GetLife()
 	{

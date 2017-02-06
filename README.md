@@ -6,7 +6,7 @@
 
 Tank War game with C++
 
-![](https://raw.githubusercontent.com/breakerthb/TankWar/day6/readme/tank.gif)
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day7/readme/tank.gif)
 
 # Flag
 
@@ -72,3 +72,12 @@ develop a main tank
 ![](https://raw.githubusercontent.com/breakerthb/TankWar/day6/readme/tank.gif)
 
 <https://github.com/breakerthb/TankWar/tree/day6>
+
+## day7
+
+- Make enemy tank shoot
+- Display scores
+
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day7/readme/tank.gif)
+
+<https://github.com/breakerthb/TankWar/tree/day7>

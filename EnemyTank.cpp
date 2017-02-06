@@ -4,8 +4,8 @@
 
 void EnemyTank::RandomTank()
 {
-	m_pos.SetX(rand() % Graphic::GetBattleGround().GetWidth());
-	m_pos.SetY(rand() % Graphic::GetBattleGround().GetHeight());
+	m_pos.SetX(rand() % (Graphic::GetBattleGround().GetWidth() - 30) + 15);
+	m_pos.SetY(rand() % (Graphic::GetBattleGround().GetHeight() - 30) + 15);
 	m_color = WHITE;
 	m_dir = (Dir)(Dir::UP + (rand() % 4));
 	m_step = 2;
