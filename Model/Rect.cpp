@@ -64,7 +64,7 @@ void Rect::Check()
 	{
 		Point p = m_startPoint;
 		m_startPoint = m_endPoint;
-		m_endPoint = m_startPoint;
+		m_endPoint = p;
 	}
 }
 
