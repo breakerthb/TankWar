@@ -115,6 +115,7 @@ void MainTank::CalculateSphere()
 void MainTank::Shoot(list<Object*>& lstBullets)
 {
 	Bullet* pBullet = new Bullet(m_pos, m_dir, m_color);
+	pBullet->SetStep(20);
 
 	lstBullets.push_back(pBullet);
 }

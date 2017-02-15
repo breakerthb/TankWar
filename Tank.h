@@ -19,7 +19,7 @@ public:
 
 		m_color = YELLOW;
 		m_dir = Dir::UP;
-		m_step = 4;
+		m_step = 2;
 
 		m_bDisappear = false;
 		m_bNeedShoot = false;

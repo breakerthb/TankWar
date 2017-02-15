@@ -49,9 +49,6 @@ void Graphic::ShowScore()
 	COLORREF fill_color_save = getfillcolor();
 	COLORREF color_save = getcolor();
 
-	//setfillcolor(m_color);
-	//setcolor(m_color);
-
 	rectangle(SCORE_LEFT, SCORE_TOP, SCORE_LEFT + 200, SCORE_TOP + 40);
 
 
@@ -89,6 +86,35 @@ void Graphic::ShowScore()
 	wsprintf((LPWSTR)m_pArray, _T("共击毁敌人数  :  %d"), Setting::GetTankSum());
 	drawtext((LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
 
+
+	setcolor(color_save);
+	setfillcolor(fill_color_save);
+}
+
+void Graphic::ShowGameLevel(int nLevel)
+{
+	COLORREF fill_color_save = getfillcolor();
+	COLORREF color_save = getcolor();
+
+	rectangle(BATTLE_GROUND_X1 + 100, BATTLE_GROUND_Y1 + 200, BATTLE_GROUND_X1 + 700, BATTLE_GROUND_Y1 + 380);
+
+	LOGFONT fontBak;
+	gettextstyle(&fontBak);               // 获取当前字体设置
+
+	LOGFONT f = fontBak;
+	f.lfHeight = 48;                      // 设置字体高度为 48
+	_tcscpy_s(f.lfFaceName, _T("黑体"));  // 设置字体为“黑体”
+	f.lfQuality = ANTIALIASED_QUALITY;    // 设置输出效果为抗锯齿  
+	settextstyle(&f);                     // 设置字体样式
+	wsprintf((LPWSTR)m_pArray, _T("第 %d 关"), nLevel);
+	outtextxy(BATTLE_GROUND_X1 + 300, BATTLE_GROUND_Y1 + 250, (LPWSTR)m_pArray);
+
+	f.lfHeight = 18;
+	settextstyle(&f);
+	wsprintf((LPWSTR)m_pArray, _T("按 Enter 键开始"), nLevel);
+	outtextxy(BATTLE_GROUND_X1 + 550, BATTLE_GROUND_Y1 + 350, (LPWSTR)m_pArray);
+
+	settextstyle(&fontBak);
 
 	setcolor(color_save);
 	setfillcolor(fill_color_save);

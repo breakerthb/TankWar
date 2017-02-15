@@ -26,6 +26,11 @@ public:
 		return m_rectSphere;
 	}
 
+	void SetStep(int nStep)
+	{
+		m_step = nStep;
+	}
+
 	void SetDisappear()
 	{
 		m_bDisappear = true;

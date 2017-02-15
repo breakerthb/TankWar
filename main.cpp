@@ -14,6 +14,8 @@
 
 using namespace std;
 
+MainTank mainTank;
+
 // Bullet list
 list<Object*> lstMainTankBullets;
 list<Object*> lstBullets;
@@ -39,38 +41,54 @@ void CheckCrash()
 	}
 }
 
-void main()
+void Init()
 {
 	srand((unsigned)time(NULL));
 
 	Graphic::Create();
-
-	MainTank mainTank;
-
+	
 	lstMainTankBullets.clear();
 	lstBullets.clear();
 	lstBombs.clear();
 	lstTanks.clear();
+}
+
+void Dispose()
+{
+	for (list<Tank*>::iterator it = lstTanks.begin(); it != lstTanks.end(); it++)
+	{
+		delete *it;
+	}
+	lstTanks.clear();
+
+	for (list<Object*>::iterator it = lstMainTankBullets.begin(); it != lstMainTankBullets.end(); it++)
+	{
+		delete *it;
+	}
+
+	for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end(); it++)
+	{
+		delete *it;
+	}
+	lstBullets.clear();
+
+	for (list<Object*>::iterator it = lstBombs.begin(); it != lstBombs.end(); it++)
+	{
+		delete *it;
+	}
+	lstBombs.clear();
+
+	Graphic::Destroy();
+}
+
+void main()
+{
+	Init();
 
 	bool loop = true;
 	bool skip = false;
 	while (loop)
 	{
-		if (Setting::m_bNewLevel)
-		{
-			Sleep(1000);
-
-			Setting::m_bNewLevel = false;
-
-			Setting::NewGameLevel();
-
-			for (int i = 0; i < Setting::GetTankNum(); i++)
-			{
-				EnemyTank* p = new EnemyTank();
-				lstTanks.push_back(p);
-			}
-		}
-
 		if (kbhit())
 		{
  			int key = getch();
@@ -121,12 +139,33 @@ void main()
 		
 		if (!skip)
 		{
+			// Draw Background
 			cleardevice();
-
-			CheckCrash();
-
 			Graphic::DrawBattleGround();
+			Graphic::ShowScore();
 
+			// New Game Level
+			if (Setting::m_bNewLevel)
+			{
+				Setting::m_bNewLevel = false;
+
+				Setting::NewGameLevel();
+
+				Graphic::ShowGameLevel(Setting::GetGameLevel());
+
+				for (int i = 0; i < Setting::GetTankNum(); i++)
+				{
+					EnemyTank* p = new EnemyTank();
+					lstTanks.push_back(p);
+				}
+
+				// 设置暂停，按Enter开始
+				skip = true;
+				continue;
+			}
+			
+			CheckCrash();
+			
 			mainTank.Move();
 			mainTank.Display();
 
@@ -208,41 +247,15 @@ void main()
 					it = lstBombs.erase(it);
 					continue;
 				}
-
+				
 				(*it)->Display();
 				it++;
 			}
-
-			/* Draw Score */
-			Graphic::ShowScore();
 		}
 
-		Sleep(200);
+		Sleep(100);
 	}
 	
 	// Destroy
-	for (list<Tank*>::iterator it = lstTanks.begin(); it != lstTanks.end(); it++)
-	{
-		delete *it;
-	}
-	lstTanks.clear();
-
-	for (list<Object*>::iterator it = lstMainTankBullets.begin(); it != lstMainTankBullets.end(); it++)
-	{
-		delete *it;
-	}
-
-	for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end(); it++)
-	{
-		delete *it;
-	}
-	lstBullets.clear();
-
-	for (list<Object*>::iterator it = lstBombs.begin(); it != lstBombs.end(); it++)
-	{
-		delete *it;
-	}
-	lstBombs.clear();
-
-	Graphic::Destroy();
+	Dispose();
 }

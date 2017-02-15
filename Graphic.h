@@ -27,6 +27,7 @@ public:
 	static Rect GetBattleGround();
 
 	static void ShowScore();
+	static void ShowGameLevel(int nLevel);
 
 private:
 	static Rect m_rectScreen;

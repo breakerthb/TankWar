@@ -12,7 +12,7 @@ Bullet::Bullet(Point pos, Dir dir, COLORREF color)
 	m_dir = dir;
 	m_color = color;
 
-	m_step = 20;
+	m_step = 6;
 
 	m_bDisappear = false;
 
