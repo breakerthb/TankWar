@@ -28,6 +28,7 @@ list<Tank*> lstTanks;
 
 void CheckCrash()
 {
+	// Check enermy tank damage
 	for (list<Object*>::iterator it = lstMainTankBullets.begin(); it != lstMainTankBullets.end(); it++)
 	{
 		for (list<Tank*>::iterator itt = lstTanks.begin(); itt != lstTanks.end(); itt++)
@@ -37,6 +38,24 @@ void CheckCrash()
 				(*itt)->SetDisappear();
 				(*it)->SetDisappear();
 			}
+		}
+	}
+
+	// Check main tank damage
+	for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end(); it++)
+	{
+		if (Shape::CheckIntersect((*it)->GetSphere(), mainTank.GetSphere()))
+		{
+			Setting::Die();
+
+			if (Setting::GetLife() > 0)
+			{
+				(*it)->SetDisappear();
+			}
+			else
+			{
+				mainTank.SetDisappear();
+			}			
 		}
 	}
 }
@@ -87,6 +106,7 @@ void main()
 
 	bool loop = true;
 	bool skip = false;
+	bool bGameOver = false;
 	while (loop)
 	{
 		if (kbhit())
@@ -139,9 +159,17 @@ void main()
 		
 		if (!skip)
 		{
+			if (bGameOver)
+			{
+				break;
+			}
+
 			// Draw Background
 			cleardevice();
 			Graphic::DrawBattleGround();
+			
+			CheckCrash();
+
 			Graphic::ShowScore();
 
 			// New Game Level
@@ -163,9 +191,17 @@ void main()
 				skip = true;
 				continue;
 			}
-			
-			CheckCrash();
-			
+					
+			if (mainTank.IsDisappear())
+			{
+				skip = true;
+				bGameOver = true;
+
+				Graphic::ShowGameOver();
+
+				continue;
+			}
+
 			mainTank.Move();
 			mainTank.Display();
 

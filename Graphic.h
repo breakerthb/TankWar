@@ -29,6 +29,8 @@ public:
 	static void ShowScore();
 	static void ShowGameLevel(int nLevel);
 
+	static void ShowGameOver();
+
 private:
 	static Rect m_rectScreen;
 	static Rect m_rectBattleGround;

@@ -16,6 +16,11 @@ public:
 		return m_nLife;
 	}
 
+	static void Die()
+	{
+		m_nLife -= 1;
+	}
+
 	static int GetGameLevel()
 	{
 		return m_nGameLevel;
