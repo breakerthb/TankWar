@@ -6,7 +6,7 @@
 
 Tank War game with C++
 
-![](https://raw.githubusercontent.com/breakerthb/TankWar/day9/readme/tank.gif)
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day10/readme/tank.gif)
 
 # Flag
 
@@ -97,3 +97,11 @@ develop a main tank
 ![](https://raw.githubusercontent.com/breakerthb/TankWar/day9/readme/tank.gif)
 
 <https://github.com/breakerthb/TankWar/tree/day9>
+
+## day10
+
+- Add supper features
+
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day10/readme/tank.gif)
+
+<https://github.com/breakerthb/TankWar/tree/day10>

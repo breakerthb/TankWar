@@ -20,6 +20,10 @@ public:
 	~MainTank(){}
 
 	void SetDir(Dir dir);
+	Dir GetDir()
+	{
+		return m_dir;
+	}
 	void Display();
 	void Move();
 	void Shoot(list<Object*>& lstBullets);

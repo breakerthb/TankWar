@@ -30,6 +30,11 @@ void Setting::TankDamaged()
 
 	m_nTankLevel = m_nSumScore / 150 + 1;
 
+	if (m_nSumScore % 500 < m_nTankScore)
+	{
+		m_nLife++;
+	}
+
 	m_nTankSum++;
 
 	if (m_nTankNum == 0)

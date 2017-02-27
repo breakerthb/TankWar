@@ -117,6 +117,7 @@ void main()
 				continue;
 			}
 
+			Dir dirBak;
 			switch (key)
 			{
 			// Up
@@ -144,6 +145,19 @@ void main()
 			// Space
 			case 32:
 				mainTank.Shoot(lstMainTankBullets);
+				break;
+			// Q
+			case 113:
+				dirBak = mainTank.GetDir();
+				mainTank.SetDir(Dir::UP);
+				mainTank.Shoot(lstMainTankBullets);
+				mainTank.SetDir(Dir::DOWN);
+				mainTank.Shoot(lstMainTankBullets);
+				mainTank.SetDir(Dir::LEFT);
+				mainTank.Shoot(lstMainTankBullets);
+				mainTank.SetDir(Dir::RIGHT);
+				mainTank.Shoot(lstMainTankBullets);
+				mainTank.SetDir(dirBak);
 				break;
 			// Enter
 			case 13:
