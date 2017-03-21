@@ -26,7 +26,7 @@ Final Version
 
 develop a main tank
 
-![](https://github.com/breakerthb/TankWar/blob/master/tank.gif)
+![](https://raw.githubusercontent.com/breakerthb/TankWar/day1/tank.gif)
 
 <https://github.com/breakerthb/TankWar/tree/day1>
 
