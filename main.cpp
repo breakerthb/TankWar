@@ -33,7 +33,7 @@ void CheckCrash()
 	{
 		for (list<Tank*>::iterator itt = lstTanks.begin(); itt != lstTanks.end(); itt++)
 		{
-			if (Shape::CheckIntersect((*it)->GetSphere(), (*itt)->GetSphere()))
+			if (Shape::CheckIntersect((Rect&)(*it)->GetSphere(), (Rect&)(*itt)->GetSphere()))
 			{
 				(*itt)->SetDisappear();
 				(*it)->SetDisappear();
@@ -44,7 +44,7 @@ void CheckCrash()
 	// Check main tank damage
 	for (list<Object*>::iterator it = lstBullets.begin(); it != lstBullets.end(); it++)
 	{
-		if (Shape::CheckIntersect((*it)->GetSphere(), mainTank.GetSphere()))
+		if (Shape::CheckIntersect((Rect&)(*it)->GetSphere(), (Rect&)mainTank.GetSphere()))
 		{
 			Setting::Die();
 

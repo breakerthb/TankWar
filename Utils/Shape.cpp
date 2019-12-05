@@ -15,10 +15,10 @@ bool Shape::CheckPointInRect(Point& point, Rect& rect)
 
 bool Shape::CheckIntersect(Rect& rectA, Rect& rectB)
 {
-	if (CheckPointInRect(rectA.GetStartPoint(), rectB) ||
-		CheckPointInRect(rectA.GetEndPoint(), rectB) ||
-		CheckPointInRect(rectA.GetTRPoint(), rectB) ||
-		CheckPointInRect(rectA.GetBLPoint(), rectB))
+	if (CheckPointInRect((Point&)rectA.GetStartPoint(), rectB) ||
+		CheckPointInRect((Point&)rectA.GetEndPoint(), rectB) ||
+		CheckPointInRect((Point&)rectA.GetTRPoint(), rectB) ||
+		CheckPointInRect((Point&)rectA.GetBLPoint(), rectB))
 	{
 		return true;
 	}
