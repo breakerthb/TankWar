@@ -53,28 +53,28 @@ void Graphic::ShowScore()
 
 
 	RECT r = { SCORE_LEFT, SCORE_TOP, SCORE_LEFT + 200, SCORE_TOP + 40 };
-	wsprintf((LPWSTR)m_pArray, _T("第 %d 关"), Setting::GetGameLevel());
-	drawtext((LPWSTR)m_pArray, &r, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("第 %d 关"), Setting::GetGameLevel());
+	drawtext((LPSTR)(LPWSTR)m_pArray, &r, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 
 	r.top += 50;
 	r.bottom += 50;
-	wsprintf((LPWSTR)m_pArray, _T("分  数  :  %d"), Setting::GetSumScore());
-	drawtext((LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("分  数  :  %d"), Setting::GetSumScore());
+	drawtext((LPSTR)(LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
 
 	r.top += 50;
 	r.bottom += 50;
-	wsprintf((LPWSTR)m_pArray, _T("级  别  :  %d"), Setting::GetTankLevel());
-	drawtext((LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("级  别  :  %d"), Setting::GetTankLevel());
+	drawtext((LPSTR)(LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
 
 	r.top += 50;
 	r.bottom += 50;
-	wsprintf((LPWSTR)m_pArray, _T("生  命  :  %d"), Setting::GetLife());
-	drawtext((LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("生  命  :  %d"), Setting::GetLife());
+	drawtext((LPSTR)(LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
 
 	r.top += 50;
 	r.bottom += 50;
-	wsprintf((LPWSTR)m_pArray, _T("敌人数  :  %d"), Setting::GetTankNum());
-	drawtext((LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("敌人数  :  %d"), Setting::GetTankNum());
+	drawtext((LPSTR)(LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
 
 	r.top += 50;
 	r.bottom += 50;
@@ -83,8 +83,8 @@ void Graphic::ShowScore()
 
 	r.top += 50;
 	r.bottom += 50;
-	wsprintf((LPWSTR)m_pArray, _T("共击毁敌人数  :  %d"), Setting::GetTankSum());
-	drawtext((LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("共击毁敌人数  :  %d"), Setting::GetTankSum());
+	drawtext((LPSTR)(LPWSTR)m_pArray, &r, DT_VCENTER | DT_SINGLELINE);
 
 
 	setcolor(color_save);
@@ -106,13 +106,13 @@ void Graphic::ShowGameLevel(int nLevel)
 	_tcscpy_s(f.lfFaceName, _T("黑体"));  // 设置字体为“黑体”
 	f.lfQuality = ANTIALIASED_QUALITY;    // 设置输出效果为抗锯齿  
 	settextstyle(&f);                     // 设置字体样式
-	wsprintf((LPWSTR)m_pArray, _T("第 %d 关"), nLevel);
-	outtextxy(BATTLE_GROUND_X1 + 300, BATTLE_GROUND_Y1 + 250, (LPWSTR)m_pArray);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("第 %d 关"), nLevel);
+	outtextxy(BATTLE_GROUND_X1 + 300, BATTLE_GROUND_Y1 + 250, (LPSTR)(LPWSTR)m_pArray);
 
 	f.lfHeight = 18;
 	settextstyle(&f);
-	wsprintf((LPWSTR)m_pArray, _T("按 Enter 键开始"), nLevel);
-	outtextxy(BATTLE_GROUND_X1 + 550, BATTLE_GROUND_Y1 + 350, (LPWSTR)m_pArray);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("按 Enter 键开始"), nLevel);
+	outtextxy(BATTLE_GROUND_X1 + 550, BATTLE_GROUND_Y1 + 350, (LPSTR)(LPWSTR)m_pArray);
 
 	settextstyle(&fontBak);
 
@@ -135,13 +135,13 @@ void Graphic::ShowGameOver()
 	_tcscpy_s(f.lfFaceName, _T("黑体"));  // 设置字体为“黑体”
 	f.lfQuality = ANTIALIASED_QUALITY;    // 设置输出效果为抗锯齿  
 	settextstyle(&f);                     // 设置字体样式
-	wsprintf((LPWSTR)m_pArray, _T("GAME OVER"));
-	outtextxy(BATTLE_GROUND_X1 + 300, BATTLE_GROUND_Y1 + 250, (LPWSTR)m_pArray);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("GAME OVER"));
+	outtextxy(BATTLE_GROUND_X1 + 300, BATTLE_GROUND_Y1 + 250, (LPSTR)(LPWSTR)m_pArray);
 
 	f.lfHeight = 18;
 	settextstyle(&f);
-	wsprintf((LPWSTR)m_pArray, _T("按 Enter 键退出"));
-	outtextxy(BATTLE_GROUND_X1 + 550, BATTLE_GROUND_Y1 + 350, (LPWSTR)m_pArray);
+	wsprintf((LPSTR)(LPWSTR)m_pArray, _T("按 Enter 键退出"));
+	outtextxy(BATTLE_GROUND_X1 + 550, BATTLE_GROUND_Y1 + 350, (LPSTR)(LPWSTR)m_pArray);
 
 	settextstyle(&fontBak);
 
